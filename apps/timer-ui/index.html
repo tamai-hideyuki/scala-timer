@@ -2,11 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scala Timer</title>
-  <script type="text/javascript" src="target/scala-3.3.3/timer-ui-fastopt.js"></script>
+  <script type="text/javascript" src="target/scala-3.3.3/timer-ui-fastopt.js" defer></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+      font-size: 2.5em;
+    }
+    #app {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      min-width: 300px;
+      max-width: 90%;
+      display: flex; /* Flexboxを使って要素を配置 */
+      flex-direction: column; /* 縦並び */
+      gap: 15px; /* 要素間のスペース */
+    }
+    input[type="number"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1.1em;
+      width: calc(100% - 22px); /* パディングを考慮 */
+      box-sizing: border-box; /* パディングとボーダーを幅に含める */
+    }
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.1s ease;
+      font-weight: bold;
+      width: 100%; /* 幅いっぱいに広げる */
+    }
+    .start-button {
+      background-color: #4CAF50; /* 緑色 */
+      color: white;
+    }
+    .start-button:hover {
+      background-color: #45a049;
+      transform: translateY(-2px);
+    }
+    .start-button:active {
+      transform: translateY(0);
+    }
+    .reset-button {
+      background-color: #f44336; /* 赤色 */
+      color: white;
+      margin-top: 5px; /* スタートボタンとの間隔 */
+    }
+    .reset-button:hover {
+      background-color: #da190b;
+      transform: translateY(-2px);
+    }
+    .reset-button:active {
+      transform: translateY(0);
+    }
+    div { /* output div のスタイル */
+      font-size: 1.2em;
+      margin-top: 10px;
+      min-height: 1.2em; /* コンテンツがないときに高さが潰れないように */
+    }
+  </style>
 </head>
 <body>
-  <h1> Scala Timer</h1>
-  <div id="app"></div>
+<h1>Scala Timer</h1>
+<div id="app">
+  <!-- Scala.js アプリケーションがここにコンテンツをレンダリングします -->
+  Loading Scala.js application...
+</div>
 </body>
 </html>

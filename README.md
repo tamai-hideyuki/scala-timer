@@ -39,6 +39,9 @@
 git clone https://github.com/tamai-hideyuki/scala-timer.git
 
 cd scala-timer/apps/
+
+# コンパイルの実行
+sbt fastLinkJS
 ```
 
 - sbt の起動
