@@ -1,110 +1,107 @@
-#  scala-timer
+# Scala Timer Project
 
-- **scala-timer** is a lightweight and extendable countdown timer built with Scala.  
-- It supports both a **command-line interface (JVM)** and a **web-based interface (Scala.js)** with a real-time countdown display.
-- A timer designed to support focused work sessions, study periods, or productivity routines (e.g., Pomodoro Technique).
+![Scala](https://img.shields.io/badge/Scala-3.3.3-red?style=flat-square&logo=scala&logoColor=white)
 
----
-
-##  Features
-
--  Command-line countdown timer built with Scala (JVM-based)
--  Interactive Web UI powered by Scala.js (with real-time countdown)
--  No backend required — works fully in-browser
--  Easy to build using sbt
--  Minimal external dependencies
+- This project is a simple yet extensible countdown timer implemented in Scala.
+- It primarily consists of two components: a command-line timer that runs on the JVM, and a web-based timer with a user interface that runs in a web browser using Scala.js.
 
 ---
 
-##  Project Structure
+## Project Structure
 
-| Directory      | Description                          |
-|----------------|--------------------------------------|
-| `timer-core/`  | Core CLI logic (Scala/JVM)           |
-| `timer-ui/`    | Web UI powered by Scala.js           |
-| `project/`     | Shared sbt project settings          |
-| `README.md`    | You are reading it right now         |
+- **The project is configured as an sbt multi-project build.**
+
+- timer-core: A simple command-line countdown timer that runs on the Java Virtual Machine (JVM).
+- timer-ui: A web-based countdown timer with a user interface, compiled to JavaScript using Scala.js and running in a web browser.
+- project/: Contains sbt build definition files.
 
 ---
 
+## Getting Started
 
-##  Getting Started
+- **Follow these steps to set up and run the Scala Timer project.**
 
-### 1. Run the CLI Timer (JVM)
+#### Prerequisites
+
+- Before you begin, ensure you have the following installed:
+  - Java Development Kit (JDK): Version 17 or higher recommended (e.g., OpenJDK).
+  - sbt (Scala Build Tool): Version 1.x or higher (e.g., sbt installation guide).
+  - Python 3: Used to easily serve the web UI locally (comes pre-installed on most systems).
+  - Git: For version control.
+
+## How to Use the Project
 
 ```bash
-cd timer-core
+git clone [https://github.com/tamai-hideyuki/scala-timer.git](https://github.com/tamai-hideyuki/scala-timer.git)
 
-sbt run -- 5
+cd scala-timer/apps/
 ```
 
-```text
-→ Starts a 5-minute countdown in your terminal.
+- sbt の起動
+
+```bash
+sbt
 ```
 
-## Run the Web Timer (Scala.js)
+- Switching to the timerCore project: Inside the sbt console, switch to the timerCore subproject.
+
+```bash
+sbt:scala-timer> project timerCore
+```
+
+- Running the timer: Execute the timer with the run command. You can specify the number of minutes as an argument (default is 1 minute).
+- **To run a 1-minute timer**
+```Scala
+sbt:timer-core> run
+```
+- **To run a 3-minute timer:**
+```Scala
+sbt:timer-core> run 3
+```
+>Upon execution, a countdown will be displayed in the console and will terminate once the specified time has elapsed.
+
+
+---
+
+## Running the Web-Based Timer
+
+- The timer-ui project is implemented with Scala.js and runs in a web browser.。
+
+- **Starting sbt:**
+
+- If sbt is not already running, start the sbt console by typing sbt from the root of the scala-timer project.
+   ```bash
+   sbt
+   ```
+
+- **Switching to the timerUI project:**
+- Inside the sbt console, switch to the timerUI subproject.
+```Scala
+sbt:scala-timer> project timerUI
+```
+
+- Generating JavaScript files (for development):
+- To compile your Scala.js code to JavaScript and automatically recompile on file changes (recommended for development), use the ~fastLinkJS command.
+
+```Scala
+sbt:timer-ui> ~fastLinkJS
+```
+>This command will continue to run in the background, continuously generating timer-ui/target/scala-3.3.3/timer-ui-fastopt.js every time you save your Scala code.
+
+- Starting a local web server:
+- To load the generated JavaScript file (timer-ui/target/scala-3.3.3/timer-ui-fastopt.js) in your browser, you'll need a local web server. Open a new terminal window, navigate to the timer-ui directory, and start a web server.
 
 ```bash
 cd timer-ui
-
-sbt fastLinkJS
+python3 -m http.server 8000 # If you have Python 3 installed
 ```
+>(If you don't have Python 3 installed or prefer a different port, please start a web server using an alternative method, e.g., npm install -g http-server followed by http-server -p 8000.)
 
-- **Then open the following HTML file in your browser:**
+- Access in browser:
 
-```html
-<!-- timer-ui/index.html example -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Scala Timer</title>
-  <script type="text/javascript" src="target/scala-3.x/timer-ui-fastopt.js"></script>
-</head>
-<body>
-  <h1> Scala Timer</h1>
-  <div id="app"></div>
-</body>
-</html>
-```
-
-## Build Instructions
-
-- **Build the Web UI (Scala.js)**
-
+- **Once the web server is running, access the following URL in your web browser:**
 ```bash
-cd timer-ui
-
-sbt fastLinkJS
+http://localhost:8000/index.html
 ```
 
-- **Build the CLI app (JVM)**
-
-```bash
-cd timer-core
-
-sbt run
-```
-
-## Technologies Used
-
-- Scala 3.x
-- Scala.js
-- sbt (Scala Build Tool)
-- HTML5 + JavaScript
-
-
-## Planned Enhancements
-
--  Notification sound upon timer completion
--  Preset time buttons
--  Mobile-friendly & PWA support
--  Manage multiple timers simultaneously
--  Logging and focus statistics
-
-
-## Final Words
-
->Time is the most powerful magic.
-With scala-timer, you can now shape it to your will — whether in the console or your browser.
-
+>The "Scala Timer" UI will be displayed in your browser. Enter your desired duration in minutes and click the "Start Ritual" button to begin the countdown!
