@@ -9,7 +9,7 @@ object TimerUI {
     val app = document.getElementById("app")
     val input = document.createElement("input").asInstanceOf[dom.html.Input]
     input.placeholder = "Enter minutes"
-    input. = "number"
+    input.`type` = "number"   
 
     val button = document.createElement("button")
     button.textContent = "Start Ritual"

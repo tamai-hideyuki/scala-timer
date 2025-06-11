@@ -2,3 +2,18 @@
 
 setup_scala_timer.sh
 
+# sbt
+.bsp/
+.metals/
+.sbt/
+.vscode/
+target/
+project/target/
+project/project/
+
+# IDEs
+.idea/
+.DS_Store
+
+# logs
+*.log
